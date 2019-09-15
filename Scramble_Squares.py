@@ -151,6 +151,30 @@ class Tree:
                 for node in listaAuxiliar:
                     listaNos.append(node)
 
+    def baseEmProfundidadeComLimite(self, limite):
+        listaNos = list()
+        listaAuxiliar = list()
+        listaNos.append(self.raiz)
+        self.profundidade = 0
+        custo = 0
+        contadorIteracoes = 0
+
+        while((len(listaNos) > 0) and (contadorIteracoes < limite)):
+            no = listaNos.pop(len(listaNos)-1)
+
+            if(self.objetivo(no.estado)):
+                return no
+            else:
+                self.profundidade += 1
+                contadorIteracoes += 1
+                custo += 1
+                listaAuxiliar = self.sucessores(no, custo)
+            
+                for node in listaAuxiliar:
+                    listaNos.append(node)
+        
+        return None
+
 if __name__ == "__main__":
     matriz = np.array([[1,2,3],
                        [4,5,6],
@@ -160,10 +184,11 @@ if __name__ == "__main__":
     no = Node(estado=matriz, profundidade=0)
     no.custo = 0
     arv = Tree(no)
-    noFim = arv.baseEmProfundidade()
-    print(noFim.estado)
-    print(noFim.profundidade)
-    print(noFim.custo)
+    noFim = arv.baseEmProfundidadeComLimite(100)
+    if(noFim != None):
+        print(noFim.estado)
+        print(noFim.profundidade)
+        print(noFim.custo)
     
     
 
