@@ -5,14 +5,13 @@ class Node:
         self.pai = pai
         self.estado = estado
         self.acao = None
-        self.custo = None
+        self.custo = 0
         self.profundidade = profundidade
         
 class Tree:
     def __init__(self,raiz):
         self.raiz = raiz
         self.profundidade = 0
-        self.noEqual = None
         self.matrizObjetivo = np.array([[1,2,3],
                                         [4,5,6],
                                         [7,8,-1]
@@ -111,7 +110,7 @@ class Tree:
     def objetivo(self, matriz):   
          return np.array_equal(matriz, self.matrizObjetivo)
 
-    def baseEmLargura(self):
+    def buscaEmLargura(self):
         listaNos = list()
         listaAuxiliar = list()
         listaNos.append(self.raiz)
@@ -131,7 +130,7 @@ class Tree:
                 for node in listaAuxiliar:
                     listaNos.append(node)
     
-    def baseEmProfundidade(self):
+    def buscaEmProfundidade(self):
         listaNos = list()
         listaAuxiliar = list()
         listaNos.append(self.raiz)
@@ -151,7 +150,7 @@ class Tree:
                 for node in listaAuxiliar:
                     listaNos.append(node)
 
-    def baseEmProfundidadeComLimite(self, limite):
+    def buscaEmProfundidadeComLimite(self, limite):
         listaNos = list()
         listaAuxiliar = list()
         listaNos.append(self.raiz)
@@ -159,12 +158,12 @@ class Tree:
         custo = 0
         contadorIteracoes = 0
 
-        while((len(listaNos) > 0) and (contadorIteracoes < limite)):
+        while(len(listaNos) > 0):
             no = listaNos.pop(len(listaNos)-1)
 
             if(self.objetivo(no.estado)):
                 return no
-            else:
+            elif (contadorIteracoes < limite):
                 self.profundidade += 1
                 contadorIteracoes += 1
                 custo += 1
@@ -175,6 +174,7 @@ class Tree:
         
         return None
 
+
 if __name__ == "__main__":
     matriz = np.array([[1,2,3],
                        [4,5,6],
@@ -182,9 +182,8 @@ if __name__ == "__main__":
                       ])
 
     no = Node(estado=matriz, profundidade=0)
-    no.custo = 0
     arv = Tree(no)
-    noFim = arv.baseEmProfundidadeComLimite(100)
+    noFim = arv.buscaEmProfundidadeComLimite(3)
     if(noFim != None):
         print(noFim.estado)
         print(noFim.profundidade)
