@@ -136,7 +136,6 @@ class Tree:
         listaNos.append(self.raiz)
         self.profundidade = 0
         custo = 0
-
         while(len(listaNos) > 0):
             no = listaNos.pop(len(listaNos)-1)
 
@@ -146,7 +145,6 @@ class Tree:
                 self.profundidade += 1
                 custo += 1
                 listaAuxiliar = self.sucessores(no, custo)
-            
                 for node in listaAuxiliar:
                     listaNos.append(node)
 
@@ -171,9 +169,15 @@ class Tree:
             
                 for node in listaAuxiliar:
                     listaNos.append(node)
-        
         return None
 
+    def buscaEmProfundidadeIterativa(self):
+        limite = 0
+        while(True):
+            no = self.buscaEmProfundidadeComLimite(limite)         
+            if no != None:
+                return no            
+            limite += 1
 
 if __name__ == "__main__":
     matriz = np.array([[1,2,3],
@@ -183,12 +187,8 @@ if __name__ == "__main__":
 
     no = Node(estado=matriz, profundidade=0)
     arv = Tree(no)
-    noFim = arv.buscaEmProfundidadeComLimite(3)
+    noFim = arv.buscaEmProfundidadeIterativa()
     if(noFim != None):
         print(noFim.estado)
         print(noFim.profundidade)
         print(noFim.custo)
-    
-    
-
-    
