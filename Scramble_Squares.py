@@ -77,33 +77,20 @@ class Tree:
             return None
         return no
         
-    def sucessores(self, pai, custo):
+    def sucessores(self, pai):
         listaSucessores = list()
-        
-        noEsq = self.esquerda(pai)
-        noAcima = self.acima(pai)
-        noDir = self.direita(pai)
-        noAbaixo = self.abaixo(pai)
-        
-        if noEsq != None:
-            noEsq.profundidade = self.profundidade
-            noEsq.custo = custo
-            listaSucessores.append(noEsq)
+        listaNos = list()
 
-        if noAcima != None:        
-            noAcima.profundidade = self.profundidade
-            noAcima.custo = custo
-            listaSucessores.append(noAcima)
-        
-        if noDir != None:
-            noDir.profundidade = self.profundidade
-            noDir.custo = custo
-            listaSucessores.append(noDir)
+        listaNos.append(self.esquerda(pai))
+        listaNos.append(self.acima(pai))
+        listaNos.append(self.direita(pai))
+        listaNos.append(self.abaixo(pai))
 
-        if noAbaixo != None:
-            noAbaixo.profundidade = self.profundidade
-            noAbaixo.custo = custo
-            listaSucessores.append(noAbaixo)
+        for no in listaNos:
+            if no != None:
+                no.profundidade = pai.profundidade + 1
+                no.custo = pai.custo + 1
+                listaSucessores.append(no)
         
         return listaSucessores
 
@@ -115,17 +102,14 @@ class Tree:
         listaAuxiliar = list()
         listaNos.append(self.raiz)
         self.profundidade = 0
-        custo = 0
         
         while(len(listaNos) > 0):
+            self.profundidade = listaNos[len(listaNos)-1].profundidade
             no = listaNos.pop(0)
-
             if(self.objetivo(no.estado)):
                 return no
             else:
-                self.profundidade += 1
-                custo += 1
-                listaAuxiliar = self.sucessores(no, custo)
+                listaAuxiliar = self.sucessores(no)
             
                 for node in listaAuxiliar:
                     listaNos.append(node)
@@ -135,16 +119,14 @@ class Tree:
         listaAuxiliar = list()
         listaNos.append(self.raiz)
         self.profundidade = 0
-        custo = 0
+
         while(len(listaNos) > 0):
             no = listaNos.pop(len(listaNos)-1)
-
+            self.profundidade = no.profundidade
             if(self.objetivo(no.estado)):
                 return no
             else:
-                self.profundidade += 1
-                custo += 1
-                listaAuxiliar = self.sucessores(no, custo)
+                listaAuxiliar = self.sucessores(no)
                 for node in listaAuxiliar:
                     listaNos.append(node)
 
@@ -152,21 +134,14 @@ class Tree:
         listaNos = list()
         listaAuxiliar = list()
         listaNos.append(self.raiz)
-        self.profundidade = 0
-        custo = 0
-        contadorIteracoes = 0
 
         while(len(listaNos) > 0):
             no = listaNos.pop(len(listaNos)-1)
-
+            self.profundidade = no.profundidade
             if(self.objetivo(no.estado)):
                 return no
-            elif (contadorIteracoes < limite):
-                self.profundidade += 1
-                contadorIteracoes += 1
-                custo += 1
-                listaAuxiliar = self.sucessores(no, custo)
-            
+            elif (no.profundidade < limite):
+                listaAuxiliar = self.sucessores(no)
                 for node in listaAuxiliar:
                     listaNos.append(node)
         return None
@@ -187,7 +162,7 @@ if __name__ == "__main__":
 
     no = Node(estado=matriz, profundidade=0)
     arv = Tree(no)
-    noFim = arv.buscaEmProfundidadeIterativa()
+    noFim = arv.buscaEmProfundidadeComLimite(2)
     if(noFim != None):
         print(noFim.estado)
         print(noFim.profundidade)
