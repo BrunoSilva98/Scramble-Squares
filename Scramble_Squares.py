@@ -12,6 +12,7 @@ class Tree:
     def __init__(self,raiz):
         self.raiz = raiz
         self.profundidade = 0
+        self.listaPrioridade = list()
         self.matrizObjetivo = np.array([[1,2,3],
                                         [4,5,6],
                                         [7,8,-1]
@@ -154,6 +155,20 @@ class Tree:
                 return no            
             limite += 1
 
+    def insereListaPrioridade(self, no):
+        for custo in range(len(self.listaPrioridade)):
+            if(no.custo == self.listaPrioridade[custo][0]):
+                self.listaPrioridade[custo].append(no)        
+                return None
+        self.listaPrioridade.append([no.custo])
+        self.listaPrioridade[len(self.listaPrioridade)-1].append(no)
+        return None
+
+    def buscaMenorCusto(self):
+        
+
+    def 
+
 if __name__ == "__main__":
     matriz = np.array([[1,2,3],
                        [4,5,6],
@@ -162,7 +177,7 @@ if __name__ == "__main__":
 
     no = Node(estado=matriz, profundidade=0)
     arv = Tree(no)
-    noFim = arv.buscaEmProfundidadeComLimite(2)
+    noFim = arv.buscaEmProfundidadeIterativa()
     if(noFim != None):
         print(noFim.estado)
         print(noFim.profundidade)
