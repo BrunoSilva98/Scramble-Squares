@@ -1,13 +1,5 @@
 import numpy as np
-
-class Node:
-    def __init__(self, pai=None, estado=None, profundidade=None):
-        self.pai = pai
-        self.estado = estado
-        self.acao = None
-        self.custo = 0
-        self.profundidade = profundidade
-        
+from Node import Node
 class Tree:
     def __init__(self,raiz):
         self.raiz = raiz
@@ -202,7 +194,7 @@ if __name__ == "__main__":
 
     no = Node(estado=matriz, profundidade=0)
     arv = Tree(no)
-    noFim = arv.buscaEmLargura()
+    noFim = arv.buscaMenorCusto()
     if(noFim != None):
         print(noFim.estado)
         print(noFim.profundidade)
