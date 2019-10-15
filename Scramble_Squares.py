@@ -4,8 +4,6 @@ class Tree:
     def __init__(self,raiz):
         self.raiz = raiz
         self.profundidade = 0
-        self.listaPrioridade = list()
-        self.qtdeElementos = 0
         self.matrizObjetivo = np.array([[1,2,3],
                                         [4,5,6],
                                         [7,8,-1]
