@@ -1,5 +1,6 @@
 import numpy as np
-from Node import Node
+from Node import *
+from Scramble_Squares import *
 class Tree:
     def __init__(self,raiz):
         self.raiz = raiz
