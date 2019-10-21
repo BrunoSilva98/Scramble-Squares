@@ -1,5 +1,5 @@
 import numpy as np
-from Node import Node
+from Node import *
 
 class Scramble_Squares:
     def __init__(self):

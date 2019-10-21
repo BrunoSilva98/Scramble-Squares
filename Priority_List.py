@@ -16,13 +16,13 @@ class PriorityList():
 
         self.listaPrioridade.append([no.custo])
         self.listaPrioridade[len(self.listaPrioridade)-1].append(no)
-        self.ordListaPrioridade()
         return None
 
     def addListListaPrioridade(self, lista):
         for elemento in lista:
             self.addElementListaPrioridade(elemento)
             self.qtdeElementos += 1
+        self.ordListaPrioridade()
 
     def getElementListaPrioridade(self):
         for custo in range(len(self.listaPrioridade)):
