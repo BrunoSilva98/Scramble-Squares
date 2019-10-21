@@ -1,7 +1,9 @@
+from Scramble_Squares import Scramble_Squares
 class PriorityList():
     def __init__(self):
         self.listaPrioridade = list()
         self.qtdeElementos = 0
+        self.squares = Scramble_Squares()
         
     def ordListaPrioridade(self):
         self.listaPrioridade = sorted(self.listaPrioridade)
@@ -22,16 +24,21 @@ class PriorityList():
             self.addElementListaPrioridade(elemento)
             self.qtdeElementos += 1
 
+    def getElementListaPrioridade(self):
+        for custo in range(len(self.listaPrioridade)):
+            if(len(self.listaPrioridade[custo]) > 1):
+                self.qtdeElementos -= 1
+                return self.listaPrioridade[custo].pop(1)
 
-    def buscaPorCusto(self):
-        self.addElementListaPrioridade(self.raiz)
+    def buscaPorCustoUniforme(self, raiz):
+        self.addElementListaPrioridade(raiz)
         self.qtdeElementos += 1
 
         while(self.qtdeElementos > 0):
                 no = self.getElementListaPrioridade()
                 
-                if (self.objetivo(no.estado)):
+                if (self.squares.objetivo(no.estado)):
                     self.listaPrioridade = self.listaPrioridade.clear()
                     return no
                 else:
-                    self.addListListaPrioridade(self.sucessores(no))        
+                    self.addListListaPrioridade(self.squares.sucessores(no))        
