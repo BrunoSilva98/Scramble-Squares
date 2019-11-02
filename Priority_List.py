@@ -1,5 +1,5 @@
 from Scramble_Squares import Scramble_Squares
-class PriorityList():
+class PriorityList:
     def __init__(self):
         self.listaPrioridade = list()
         self.qtdeElementos = 0

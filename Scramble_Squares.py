@@ -87,3 +87,14 @@ class Scramble_Squares:
 
     def objetivo(self, matriz):   
          return np.array_equal(matriz, self.matrizObjetivo)
+
+    def getQtdeFora(self, matriz):
+        qtde_fora = 0
+        for linha in range(3):
+            for coluna in range(3):
+                if matriz[linha][coluna] != self.matrizObjetivo[linha][coluna]:
+                    qtde_fora += 1
+        return qtde_fora
+
+
+
