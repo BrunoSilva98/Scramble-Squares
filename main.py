@@ -13,13 +13,14 @@ if __name__ == "__main__":
     arv = Tree(no)
     Prioridade = PriorityList()
 
+    #Para executar, tirar o comentário do método
     noFim = arv.buscaEmLargura()
-    no = Prioridade.buscaPorCustoUniforme(no)
+    noFim = arv.buscaEmProfundidade()
+    noFim = arv.buscaEmProfundidadeComLimite(100)
+    noFim = arv.buscaEmProfundidadeIterativa()
+    noFim = Prioridade.buscaPorCustoUniforme(no)
 
     if(noFim != None and no != None):
         print(noFim.estado)
-        print(noFim.profundidade)
-        print(noFim.custo)
-        print(no.estado)
-        print(no.profundidade)
-        print(no.custo)
+        print('Profundidade {0}'.format(noFim.profundidade))
+        print('Custo {0}'.format(noFim.custo))
