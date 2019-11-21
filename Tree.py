@@ -1,4 +1,4 @@
-from Scramble_Squares import Scramble_Squares
+from ScrambleSquares import Scramble_Squares
 
 class Tree:
     def __init__(self,raiz):

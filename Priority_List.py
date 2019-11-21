@@ -1,4 +1,5 @@
-from Scramble_Squares import Scramble_Squares
+from ScrambleSquares import Scramble_Squares
+
 class PriorityList:
     def __init__(self):
         self.listaPrioridade = list()

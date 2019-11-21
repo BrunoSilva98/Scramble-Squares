@@ -1,4 +1,4 @@
-from Scramble_Squares import Scramble_Squares
+from ScrambleSquares import Scramble_Squares
 import numpy as np
 
 class Heuristica:

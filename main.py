@@ -2,6 +2,7 @@ import numpy as np
 from Node import *
 from Tree import Tree
 from Priority_List import PriorityList
+from Busca_BME import BME
 
 if __name__ == "__main__":
     matriz = np.array([[1,2,3],
@@ -11,14 +12,15 @@ if __name__ == "__main__":
 
     no = Node(estado=matriz, profundidade=0)
     arv = Tree(no)
-    Prioridade = PriorityList()
-
+    prioridade = PriorityList()
+    busca_informacao = BME()
     #Para executar, tirar o comentário do método
-    noFim = arv.buscaEmLargura()
-    noFim = arv.buscaEmProfundidade()
-    noFim = arv.buscaEmProfundidadeComLimite(100)
-    noFim = arv.buscaEmProfundidadeIterativa()
-    noFim = Prioridade.buscaPorCustoUniforme(no)
+    #noFim = arv.buscaEmLargura()
+    #noFim = arv.buscaEmProfundidade()
+    #noFim = arv.buscaEmProfundidadeComLimite(100)
+    #noFim = arv.buscaEmProfundidadeIterativa()
+    #noFim = prioridade.buscaPorCustoUniforme(no)
+    noFim = busca_informacao.busca_GME(no,"h1")
 
     if(noFim != None and no != None):
         print(noFim.estado)
