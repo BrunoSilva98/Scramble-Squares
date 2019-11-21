@@ -14,8 +14,9 @@ class BME():
         while(self.priority_list.qtdeElementos>0):
             no = self.priority_list.getElementListaPrioridade()
             if(self.squares.objetivo(no.estado)):
+                self.priority_list.listaPrioridade.clear()
                 return no
             elif(no.profundidade<limite):
-                self.squares.sucessores(no, "info", funcao_h)
-
+                self.priority_list.addListListaPrioridade(self.squares.sucessores(no, "info", funcao_h))
+        return None
 

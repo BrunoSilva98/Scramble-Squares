@@ -38,7 +38,7 @@ class PriorityList:
                 no = self.getElementListaPrioridade()
                 
                 if (self.squares.objetivo(no.estado)):
-                    self.listaPrioridade = self.listaPrioridade.clear()
+                    self.listaPrioridade.clear()
                     return no
                 else:
                     self.addListListaPrioridade(self.squares.sucessores(no))        
