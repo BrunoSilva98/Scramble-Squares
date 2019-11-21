@@ -14,8 +14,7 @@ if __name__ == "__main__":
     no = Node(estado=matriz, profundidade=0)
     #arv = Tree(no)
     scramble_squares = Scramble_Squares()
-    prioridade = PriorityList(scramble_squares)
-    busca_informacao = BME(scramble_squares, prioridade)
+    busca_informacao = BME(scramble_squares)
     #Para executar, tirar o comentário do método
     #noFim = arv.buscaEmLargura()
     #noFim = arv.buscaEmProfundidade()
