@@ -1,8 +1,10 @@
 import numpy as np
 from Node import *
+from Heuristica import Heuristica
 
 class Scramble_Squares:
     def __init__(self):
+        self.heuristica = Heuristica()
         self.matrizObjetivo = np.array([[1,2,3],
                                         [4,5,6],
                                         [7,8,-1]
@@ -68,7 +70,7 @@ class Scramble_Squares:
             return None
         return no
 
-    def sucessores(self, pai):
+    def sucessores(self, pai, origem="no_info", func_h=None):
         listaSucessores = list()
         listaNos = list()
 
@@ -80,7 +82,13 @@ class Scramble_Squares:
         for no in listaNos:
             if no != None:
                 no.profundidade = pai.profundidade + 1
-                no.custo = pai.custo + 1
+                if origem == "info":
+                    if func_h == "h1":
+                        no.custo = self.heuristica.h1(no)
+                    elif func_h == "h2":
+                        no.custo = self.heuristica.h2(no)
+                else:
+                    no.custo = pai.custo + 1
                 listaSucessores.append(no)
         
         return listaSucessores
