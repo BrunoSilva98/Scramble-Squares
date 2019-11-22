@@ -1,5 +1,3 @@
-
-
 class PriorityList:
     def __init__(self, squares):
         self.listaPrioridade = list()

@@ -17,7 +17,8 @@ if __name__ == "__main__":
     scramble_squares = Scramble_Squares()
     prioridade = PriorityList(scramble_squares)
     busca_informacao = BME(scramble_squares, prioridade)
-    noFim = busca_informacao.busca_GME(no,"h2")
+
+    noFim = busca_informacao.busca_A(no,"h1")
     qtde_total_nos = busca_informacao.priority_list.total_elementos
     fator_ramificacao = fator_ramificacao_efetivo(qtde_total_nos, noFim.profundidade)
 
