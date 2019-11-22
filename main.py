@@ -7,8 +7,8 @@ from ScrambleSquares import Scramble_Squares
 
 if __name__ == "__main__":
     matriz = np.array([[4,1,2],
-                       [5,-1,3],
-                       [7,8,6]
+                       [5,3,6],
+                       [7,8,-1]
                       ])
 
     no = Node(estado=matriz, profundidade=0)
@@ -28,3 +28,4 @@ if __name__ == "__main__":
         print(noFim.estado)
         print('Profundidade {0}'.format(noFim.profundidade))
         print('Custo {0}'.format(noFim.custo))
+        print("Quantidade de nos {0}".format(busca_informacao.priority_list.total_elementos))

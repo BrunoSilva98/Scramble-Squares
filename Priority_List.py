@@ -5,6 +5,7 @@ class PriorityList:
         self.listaPrioridade = list()
         self.qtdeElementos = 0
         self.squares = squares
+        self.total_elementos = 0
         
     def ordListaPrioridade(self):
         self.listaPrioridade = sorted(self.listaPrioridade)
@@ -14,6 +15,7 @@ class PriorityList:
             if(no.custo == self.listaPrioridade[custo][0]):
                 self.listaPrioridade[custo].append(no)
                 self.qtdeElementos += 1
+                self.total_elementos += 1
                 return None
 
         self.listaPrioridade.append([no.custo])
