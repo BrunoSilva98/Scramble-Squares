@@ -2,12 +2,9 @@
 #d - Profundidade na qual a solução foi encontrada
 
 def calc_n(b, d):
-    contador = 1
     n = 0
-    while(contador <= d):
-        n += b**contador
-        contador += 1
-    n += 1
+    for profundidade in range(d+1):
+        n += b**profundidade
     return n
 
 def fator_ramificacao_efetivo(total_nos, d):
