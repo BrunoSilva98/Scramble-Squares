@@ -6,9 +6,9 @@ from Busca_BME import BME
 from ScrambleSquares import Scramble_Squares
 
 if __name__ == "__main__":
-    matriz = np.array([[3,4,2],
-                       [1,7,6],
-                       [-1,5,8]
+    matriz = np.array([[4,1,2],
+                       [5,-1,3],
+                       [7,8,6]
                       ])
 
     no = Node(estado=matriz, profundidade=0)
