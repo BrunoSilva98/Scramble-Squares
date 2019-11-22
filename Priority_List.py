@@ -37,7 +37,6 @@ class PriorityList:
 
     def buscaPorCustoUniforme(self, raiz):
         self.addElementListaPrioridade(raiz)
-        self.qtdeElementos += 1
 
         while(self.qtdeElementos > 0):
                 no = self.getElementListaPrioridade()
