@@ -89,9 +89,9 @@ class Scramble_Squares:
                         no.custo = self.heuristica.h2(no)
                 elif origem == "A*":
                     if func_h == "h1":
-                        no.custo = pai.profundidade + 1 + self.heuristica.h1(no)
+                        no.custo = no.profundidade + self.heuristica.h1(no)
                     elif func_h == "h2":
-                        no.custo = pai.profundidade + 1 + self.heuristica.h2(no)
+                        no.custo = no.profundidade + self.heuristica.h2(no)
                 else:
                     no.custo = pai.custo + 1
                 listaSucessores.append(no)

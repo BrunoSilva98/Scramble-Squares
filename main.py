@@ -6,9 +6,9 @@ from Busca_BME import BME
 from ScrambleSquares import Scramble_Squares
 
 if __name__ == "__main__":
-    matriz = np.array([[4,1,2],
-                       [5,3,6],
-                       [7,8,-1]
+    matriz = np.array([[-1,1,2],
+                       [4,5,3],
+                       [7,8,6]
                       ])
 
     no = Node(estado=matriz, profundidade=0)
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     #noFim = arv.buscaEmProfundidadeComLimite(100)
     #noFim = arv.buscaEmProfundidadeIterativa()
     #noFim = prioridade.buscaPorCustoUniforme(no)
-    noFim = busca_informacao.busca_GME(no,"h1")
+    noFim = busca_informacao.busca_A(no,"h2")
 
     if(noFim != None and no != None):
         print(noFim.estado)

@@ -10,7 +10,7 @@ class BME():
     def busca_GME(self, raiz, funcao_h, limite=22):
         self.priority_list.addElementListaPrioridade(raiz)
         
-        while(self.priority_list.qtdeElementos>0):
+        while(self.priority_list.qtdeElementos > 0):
             no = self.priority_list.getElementListaPrioridade()
             if(self.squares.objetivo(no.estado)):
                 self.priority_list.listaPrioridade.clear()
@@ -29,3 +29,4 @@ class BME():
                 return no
             else:
                 self.priority_list.addListListaPrioridade(self.squares.sucessores(no, "A*", funcao_h))
+        return None
