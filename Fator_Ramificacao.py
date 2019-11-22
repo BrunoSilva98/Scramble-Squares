@@ -8,8 +8,8 @@ def calc_n(b, d):
     return n
 
 def fator_ramificacao_efetivo(total_nos, d):
-    minimo = 1.25
-    maximo = 2.5
+    minimo = 0
+    maximo = 5
     erro = 0.0001
     n = 0
     b = 0
