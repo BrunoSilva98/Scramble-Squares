@@ -15,6 +15,7 @@ def fator_ramificacao_efetivo(total_nos, d):
     maximo = 2.5
     erro = 0.0001
     n = 0
+    b = 0
     
     while(abs(n-total_nos) > erro):
         b = (minimo + maximo)/2
