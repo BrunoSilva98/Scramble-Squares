@@ -2,10 +2,10 @@ from Heuristica import Heuristica
 from Priority_List import PriorityList
 
 class BME():
-    def __init__(self, squares):
+    def __init__(self, squares, priority_list):
         self.squares = squares
         self.heuristica = Heuristica(squares)
-        self.priority_list = PriorityList(self.squares)
+        self.priority_list = priority_list
         
     def busca_GME(self, raiz, funcao_h, limite=22):
         self.priority_list.addElementListaPrioridade(raiz)

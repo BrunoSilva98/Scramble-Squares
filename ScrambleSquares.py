@@ -100,7 +100,3 @@ class Scramble_Squares:
 
     def objetivo(self, matriz):   
          return np.array_equal(matriz, self.matrizObjetivo)
-        
-
-
-
