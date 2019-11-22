@@ -3,7 +3,7 @@ import numpy as np
 class Heuristica:
     def __init__(self, squares):
         self.squares = squares
-        self.elementosFora = []
+        self.elementosFora = list()
         
     def h1(self,no): #h1 será a busca por quantidade de elementos fora da posição
         qtde_fora = 0
